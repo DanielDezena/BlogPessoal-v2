@@ -3,6 +3,7 @@
         <div class="col-md-6" id="img-bg">
         </div>
         <div class="col-md-6 mt-5">
+
             <h1 class="text-center mb-3 ">Cadastre-se</h1>
             <div class="form-group">
                 <label for="usuario">Nome</label>
@@ -13,6 +14,14 @@
                 <input class="form-control" type="text" name="usuario" id="usuario" placeholder="insira seu e-mail">
             </div>
             <div class="form-group">
+                <label for="usuario">Link da foto</label>
+                <input class="form-control" type="img-link" name="img-link" id="img-link" placeholder="coloque um endereço de imagem aqui">
+            </div>
+            <div class="form-group">
+                <label for="usuario">Bio</label>
+                <input class="form-control" type="bio" name="bio" id="bio" placeholder="Uma descrição sobre você">
+            </div>
+            <div class="form-group">
                 <label for="senha">Senha</label>
                 <input class="form-control" type="password" name="senha" id="senha" placeholder="senha">
             </div>
@@ -20,8 +29,17 @@
                 <label for="senha">Repetir senha</label>
                 <input class="form-control" type="password" name="repetesenha" id="repetesenha" placeholder="sua senha novamente">
             </div>
+            <div class="form-group">
+                <label for="tipo">tipo de usuario</label>
+                <select class="form-control" name="tipo" id="tipo">
+                    <option>selecione um tipo de usuário:</option>
+                    <option value="cliente">cliente</option>
+                    <option value="adm">administrador</option>
+                </select>
+            </div>
             <div class="d-flex justify-content-center">
-                <button class="btn btn-info">Cadastrar</button>
+                <button type="submit" class="btn btn-danger mr-4">Cancelar</button>
+                <button type="submit" class="btn btn-info">Cadastrar</button>
             </div>
         </div>
     </div>
