@@ -7,15 +7,15 @@
             <h1 class="text-center mb-3 ">Cadastre-se</h1>
             <div class="form-group">
                 <label for="usuario">Nome</label>
-                <input class="form-control" type="text" name="nome" id="nome" placeholder="seu nome completo">
+                <input [(ngModel)]='user.nome' class="form-control" type="text" name="nome" id="nome" placeholder="seu nome completo">
             </div>
             <div class="form-group">
                 <label for="usuario">Usuário</label>
-                <input class="form-control" type="text" name="usuario" id="usuario" placeholder="insira seu e-mail">
+                <input [(ngModel)]='user.usuario' class="form-control" type="text" name="usuario" id="usuario" placeholder="insira seu e-mail">
             </div>
             <div class="form-group">
                 <label for="usuario">Link da foto</label>
-                <input class="form-control" type="img-link" name="img-link" id="img-link" placeholder="coloque um endereço de imagem aqui">
+                <input [(ngModel)]='user.foto' class="form-control" type="img-link" name="img-link" id="img-link" placeholder="coloque um endereço de imagem aqui">
             </div>
             <div class="form-group">
                 <label for="usuario">Bio</label>
@@ -23,15 +23,15 @@
             </div>
             <div class="form-group">
                 <label for="senha">Senha</label>
-                <input class="form-control" type="password" name="senha" id="senha" placeholder="senha">
+                <input (input)='confirmSenha($event)' class="form-control" type="password" name="senha" id="senha" placeholder="senha">
             </div>
             <div class="form-group">
                 <label for="senha">Repetir senha</label>
-                <input class="form-control" type="password" name="repetesenha" id="repetesenha" placeholder="sua senha novamente">
+                <input [(ngModel)]='user.senha' class="form-control" type="password" name="repetesenha" id="repetesenha" placeholder="sua senha novamente">
             </div>
             <div class="form-group">
                 <label for="tipo">tipo de usuario</label>
-                <select class="form-control" name="tipo" id="tipo">
+                <select class="form-control" name="tipo" id="tipo" (change)='tipoUser($event)'>
                     <option>selecione um tipo de usuário:</option>
                     <option value="cliente">cliente</option>
                     <option value="adm">administrador</option>
@@ -39,7 +39,7 @@
             </div>
             <div class="d-flex justify-content-center">
                 <button type="submit" class="btn btn-danger mr-4" routerLink='/entrar'>Cancelar</button>
-                <button type="submit" class="btn btn-info">Cadastrar</button>
+                <button type="submit" class="btn btn-info" (click)=cadastrar()>Cadastrar</button>
             </div>
         </div>
     </div>
