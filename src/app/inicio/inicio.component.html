@@ -58,8 +58,8 @@
 
 
 <!-- Modal -->
-<div class="modal fade" id="novaPostagem" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
+<div class="modal fade" role="dialog" id="novaPostagem" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">Criar nova postagem</h5>
@@ -80,9 +80,14 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="titulo">Escolha um tema ou <a routerLink='/tema' data-dismiss="modal">cadastre um novo</a>:</label>
-                    <select class="form-control" name="tema" id="tema">
-                        <option value="">Temas</option>
+                    <label for="tema">Escolha um tema ou <a routerLink='/tema' data-dismiss="modal">cadastre um novo</a>:</label>
+                    <select name="tema" id="tema" class="form-control">
+                        <option>
+                            teste
+                        </option>
+                        <option *ngFor='let tema of lista' value="{{tema.id}}">
+                            {{tema.descricao}}
+                        </option>
                     </select>
                 </div>
 
@@ -94,4 +99,4 @@
             </div>
         </div>
     </div>
-</div>
+</div>n
