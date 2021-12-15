@@ -4,6 +4,7 @@ import { environment } from 'src/environments/environment.prod';
 import { Postagem } from '../model/Postagem';
 import { Tema } from '../model/Tema';
 import { User } from '../model/User';
+import { AuthService } from '../service/auth.service';
 import { PostagemService } from '../service/postagem.service';
 import { TemaService } from '../service/tema.service';
 
@@ -15,9 +16,12 @@ import { TemaService } from '../service/tema.service';
 export class InicioComponent implements OnInit {
   
     postagem: Postagem = new Postagem()
+    listaPostagem: Postagem[]
 
     user: User = new User()
     idUser = environment.id
+    
+  
 
     tema: Tema = new Tema()
     lista: Tema[]
@@ -26,7 +30,8 @@ export class InicioComponent implements OnInit {
   constructor(
     private router: Router,
     private postagemService: PostagemService,
-    private temaService: TemaService
+    private temaService: TemaService,
+    private authService: AuthService
   ) { }
 
   ngOnInit(){
@@ -35,6 +40,7 @@ export class InicioComponent implements OnInit {
       this.router.navigate(['/entrar'])
     }
     this.getAllTemas();
+    this.getAllPostagens();
   }
 
   getAllTemas(){
@@ -48,6 +54,12 @@ export class InicioComponent implements OnInit {
     this.tema = resp)
   }
 
+  getAllPostagens(){
+    this.postagemService.getAllPostagens().subscribe((resp: Postagem[])=> {
+      this.listaPostagem = resp
+    })
+  }
+
   publicar(){
     this.tema.id = this.idTema
     this.postagem.tema = this.tema
@@ -57,8 +69,15 @@ export class InicioComponent implements OnInit {
 
     this.postagemService.postPostagem(this.postagem).subscribe((resp: Postagem)=> {
       this.postagem = resp
-      alert('postagem realizada com sucesso')})
+      alert('postagem realizada com sucesso')
+      this.postagem = new Postagem()
+      this.getAllPostagens()})
+  }
+  findByIdUser(){
+    this.authService.getByIdUser(this.idUser).subscribe((resp: User)=> {
+      this.user = resp
+    })
+  }
 
+}
 
-
-}}
