@@ -22,7 +22,7 @@ export class PostagemService {
   }
 
   postPostagem(postagem: Postagem): Observable<Postagem>{
-    return this.http.post<Postagem>('http://localhost:8080/postagens', this.token)
+    return this.http.post<Postagem>('http://localhost:8080/postagens',postagem, this.token)
   }
 
 }
